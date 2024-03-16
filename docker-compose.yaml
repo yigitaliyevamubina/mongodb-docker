@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb 
+    ports:
+      - "27018:27018"
+    volumes: 
+      - mongodata:/data/db
+    networks:
+      - docker
+
+  book-service:
+    container_name: book-service
+    build: .
+    depends_on:
+      - mongodb 
+    ports:
+      - "8080:8080"
+    networks:
+      - docker
+
+networks:
+  docker:
+    driver: bridge
+
+volumes:
+  mongodata:
