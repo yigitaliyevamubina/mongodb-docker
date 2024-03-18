@@ -20,7 +20,7 @@ var collection = helper.ConnectMongoDB()
 // Insert book
 func CreateBook(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-type", "application/json")
-
+	
 	var book models.Book
 
 	err := json.NewDecoder(r.Body).Decode(&book)
