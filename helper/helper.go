@@ -28,8 +28,8 @@ func ConnectMongoDB() *mongo.Collection {
 }
 
 func GetError(err error, w http.ResponseWriter, statusCode int) {
+	log.Println(err.Error())
 
-	log.Fatal(err.Error())
 	response := models.ErrorResponse{
 		ErrorMessage: err.Error(),
 		StatusCode:   statusCode,
